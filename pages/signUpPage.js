@@ -19,9 +19,9 @@ exports.SignUpPage = class SignUpPage extends BasePage {
         await this.email.fill(email);
         await this.countrySelector.click();
         await this.countryCodeUA.click();
-        await this.phone.pressSequentially(phone);
+        await this.phone.fill(phone);
         await this.password.fill(password);
         await this.signUpButton.click();
     }
-
+    
 }
