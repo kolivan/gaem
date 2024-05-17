@@ -28,7 +28,9 @@ module.exports = defineConfig({
     // baseURL: 'http://127.0.0.1:3000',
     baseUrl: process.env.STAGING === '1' ? 'https://brands.gaem.io' : 'https://slottio.com',
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on-first-retry',
+    trace: 'on',
+    screenshot: 'on',
+    video: 'on'
   },
 
   /* Configure projects for major browsers */
@@ -37,12 +39,12 @@ module.exports = defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
+    /*{
       name: 'Mobile Safari',
       use: {
         ...devices['iPhone 13'],
       },
-    },
+    },*/
 
     /*{
       name: 'firefox',

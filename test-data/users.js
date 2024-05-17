@@ -1,8 +1,18 @@
 import { faker } from '@faker-js/faker';
 const users = {
         login: {
-            email: 'hanna@gaem.io',
-            password: 'Tester_123',
+            userWithValidData:{
+                email: 'hanna@gaem.io',
+                password: 'Tester_1234'
+            },
+            userWithInvalidPassword:{
+                email: 'hanna@gaem.io',
+                password: 'Tester_12345'
+            },
+            userWithInvalidEmail:{
+                email: 'hanna123@gaem.io',
+                password: 'Tester_12345'
+            }
         },
         registration:
         {

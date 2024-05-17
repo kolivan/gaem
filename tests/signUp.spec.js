@@ -7,12 +7,33 @@ let signUpPage;
 let user = users.registration;
 
 test.beforeEach(async ({ page }) => {
-    signUpPage = new SignUpPage(page);
+  signUpPage = new SignUpPage(page);
   await signUpPage.open();
 });
 
 test('Sign Up with valid data', async ({ page }) => {
-        await signUpPage.register(user.firstName, user.lastName, user.email, user.phone, user.password);
-        await expect(page).toHaveURL('https://brands.gaem.io/deposits', {timeout: 5000})
+  await signUpPage.register(user.firstName, user.lastName, user.email, user.phone, user.password);
+  await expect(page).toHaveURL(new RegExp('/.*\/deposits/*'))
+});
+
+test('Open Terms and Conditions from Registration form', async ({ page }) => {
+  await signUpPage.openTermsConditionsPage();
+  const newTabPromise = page.waitForEvent("popup");
+  const newTab = await newTabPromise;
+  await newTab.waitForLoadState();
+  await expect(newTab).toHaveURL(new RegExp('/.*\/terms'))
+});
+
+test('Open Privacy Policy from Registration form', async ({ page }) => {
+  await signUpPage.openPrivacyPolicyPage();
+  const newTabPromise = page.waitForEvent("popup");
+  const newTab = await newTabPromise;
+  await newTab.waitForLoadState();
+  await expect(newTab).toHaveURL(new RegExp('/.*\/privacy-policy'))
+});
+
+test('Open Login page from Registration form', async ({ page }) => {
+  await signUpPage.openLoginPage();
+  await expect(page).toHaveURL(new RegExp('/.*\/login'))
 });
 
