@@ -14,6 +14,7 @@ exports.SignUpPage = class SignUpPage extends BasePage {
         this.termsConditionsLink = page.locator('[id="terms-conditions"]');
         this.privacyPolicyLink = page.locator('[id="privacy-policy"]');
         this.loginLink = page.locator('[id="login"]');
+        this.termsCheckbox = page.locator('[id="terms"]');
     }
 
     async register(firstName, lastName,email,phone,password) {
@@ -37,5 +38,9 @@ exports.SignUpPage = class SignUpPage extends BasePage {
 
     async openLoginPage() {
         await this.loginLink.click();
+    }
+
+    async checkTermsCheckbox() {
+        await this.termsCheckbox.click();
     }
 }

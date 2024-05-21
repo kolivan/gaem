@@ -21,6 +21,10 @@ const users = {
             firstName: faker.name.firstName(),
             lastName: faker.name.lastName(),
             phone: faker.phone.number("99#######")
+        },
+        forgotPassword:
+        {
+            email: "hanna@gaem.io",
         }
 }
 exports.users = users;
