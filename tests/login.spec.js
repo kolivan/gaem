@@ -14,7 +14,7 @@ test.beforeEach(async ({ page }) => {
 
 test('Login with valid data', async ({ page }) => {
         await loginPage.login(user.userWithValidData.email, user.userWithValidData.password);
-        await expect(page.getByText('Welcome Test')).toBeVisible();
+        await expect(page).toHaveURL(new RegExp('/.*\/dashboard/*'))
 });
 
 test('Login with invalid email data', async ({ page }) => {

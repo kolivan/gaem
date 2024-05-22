@@ -3,7 +3,7 @@ const users = {
         login: {
             userWithValidData:{
                 email: 'hanna@gaem.io',
-                password: 'Tester_1234'
+                password: 'Tester_123'
             },
             userWithInvalidPassword:{
                 email: 'hanna@gaem.io',
