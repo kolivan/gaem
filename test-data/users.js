@@ -18,13 +18,18 @@ const users = {
         {
             email: faker.internet.email(),
             password: 'Tester_123',
-            firstName: faker.name.firstName(),
-            lastName: faker.name.lastName(),
+            firstName: faker.person.firstName(),
+            lastName: faker.person.lastName(),
             phone: faker.phone.number("99#######")
         },
         forgotPassword:
         {
             email: "hanna@gaem.io",
+        },
+        deposit: {
+            email: 'hanna+22@gaem.io',
+            password: 'Tester_123'
         }
+
 }
 exports.users = users;

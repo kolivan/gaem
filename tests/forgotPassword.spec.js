@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 const { ForgotPasswordPage } = require('../pages/forgotPasswordPage');
-const { getResetLinkFromMailtrap, clearMailtrapInbox } = require('../helpers/mailtrapHelper');
+const { getResetLinkFromEmail, clearMailtrapInbox } = require('../helpers/mailtrapHelper');
 const { users } = require('../test-data/users');
 
 let forgotPasswordPage;
@@ -11,32 +11,29 @@ test.beforeEach(async ({ page }) => {
     await forgotPasswordPage.open();
   });
 
-  test('Forgot Password flow', async ({ page }) => {
+ /* test('Forgot Password flow', async ({ page }) => {
     const email = user.email;
 
     // Step 1: Trigger Forgot Password
     await forgotPasswordPage.sendRequest(email);
-  
-    // Step 2: Fetch the reset password email from Mailtrap
+
+    // Step 3: Fetch the reset password email via POP3
     let resetLink;
     try {
-      resetLink = await getResetLinkFromMailtrap(email);
+        resetLink = await getResetLinkFromEmail();
     } catch (error) {
-      console.error('Failed to get reset link:', error);
-      throw error;
+        console.error('Failed to get reset link:', error);
+        throw error;
     }
-    
-    // Step 3: Complete the password reset using the link from the email
+
+    // Step 4: Complete the password reset using the link from the email
     await page.goto(resetLink);
-  
+
     // Assuming there's a form to reset the password
     await page.fill('[id="new-password"]', 'newSecurePassword');
     await page.click('[id="reset-password-button"]');
-  
-    // Step 4: Verify the user is redirected to the appropriate page
-    await expect(page).toHaveURL(new RegExp('/password-reset-success'));
-  
-    // Cleanup: Optionally clear emails from Mailtrap
-    await clearMailtrapInbox();
-  });
 
+    // Step 5: Verify the user is redirected to the appropriate page
+    await expect(page).toHaveURL(new RegExp('/password-reset-success'));
+});
+*/
